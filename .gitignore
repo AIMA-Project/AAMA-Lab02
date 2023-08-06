@@ -1,7 +1,7 @@
 # Directories
 __pycache__/
 data/
-MalConv_*/
+*MalConv_*/
 
 # File Types
 *.pyc
