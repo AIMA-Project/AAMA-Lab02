@@ -6,3 +6,6 @@ data/
 # File Types
 *.pyc
 *.checkpoint
+
+# Specific Files
+model.zip

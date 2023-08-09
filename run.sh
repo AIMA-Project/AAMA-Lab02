@@ -12,11 +12,11 @@ BEN_TEST=data/ben_valid
 BATCH_SIZE=16
 
 # Number of iterations to train model over (default 10)
-EPOCHS=25
+EPOCHS=10
 
 # Largest contiguous block of bytes from an executable model will train on; files larger than this
 # value will be truncated (default 16000000)
-MAX_FILE_SIZE=128000000
+MAX_FILE_SIZE=64000000
 
 # Width of filter for training (default 512)
 FILTER_SIZE=512
