@@ -17,8 +17,12 @@ def gen_assignment_list (dir: str) -> List[str]:
 
 
 def grade_assignments (assignments: List[str]) -> None:
+    '''
+
+    '''
     for student_file in assignments:
         try:
+            # Load in csv file for evaluation
             with open (student_file, newline = '') as s_file:
                 csv_rows = []
                 csv_data = csv.reader (s_file)
@@ -26,18 +30,24 @@ def grade_assignments (assignments: List[str]) -> None:
                 for row in csv_data:
                     csv_rows.append (row)
 
-                validation_auc_std_dev = standard_dev_grade ("test_auc", csv_rows)
-                validation_auc_mean = mean_value_grade ("test_auc", csv_rows)
+            # Call functions to calculate "grades" for each attribute
+            train_acc_mean = mean_value_grade ("train_acc", csv_rows)
+            train_auc_mean = mean_value_grade ("train_auc", csv_rows)
+            validation_acc_mean = mean_value_grade ("test_acc", csv_rows)
+            validation_auc_mean = mean_value_grade ("test_auc", csv_rows)
 
-                # TODO: Determine how each stat should actually be graded...
-                print (student_file)
-                print ("    Test AUC Std. Dev. : " + str (validation_auc_std_dev))
-                print ("         Test AUC Mean : " + str (validation_auc_mean))
-                print()
+            # Print mean of each grade
+            print (student_file)
+            print ("   Train Acc Mean: " + str (train_acc_mean))
+            print ("   Train AUC Mean: " + str (train_auc_mean))
+            print ("    Test Acc Mean: " + str (validation_acc_mean))
+            print ("    Test AUC Mean: " + str (validation_auc_mean))
+            print()
                 
-        # Error: What was opened probably wasn't a CSV (or has bad character encoding)
+        # Error: What was opened probably wasn't a CSV (or has bad character encoding); print an
+        #        error message and move on to next file in the list
         except UnicodeDecodeError:
-            print ("File {bad_file} does not use properly-encoded Unicode.".format (bad_file=student_file))
+            print ("File {bad_file} does not use proper encoding.".format (bad_file=student_file))
 
 
 def standard_dev_grade (attribute: str, row_data: List[str]) -> float:
