@@ -30,9 +30,5 @@ EMBED_SIZE=8
 # Number of channels in output (default 128)
 CHANNEL_QUANT=128
 
-# Allow non-negative training to be used (default False)
-#DO_NON_NEGATIVE_TRAIN=--non-neg True
-DO_NON_NEGATIVE_TRAIN=""
 
-
-python3 train.py --batch_size $BATCH_SIZE --epochs $EPOCHS --max_len $MAX_FILE_SIZE --filter_size $FILTER_SIZE --filter_stride $FILTER_STRIDE $DO_NON_NEGATIVE_TRAIN --embd_size $EMBED_SIZE --num_channels $CHANNEL_QUANT $MAL_TRAIN $BEN_TRAIN $MAL_TEST $BEN_TEST
+python3 train.py --batch_size $BATCH_SIZE --epochs $EPOCHS --max_len $MAX_FILE_SIZE --filter_size $FILTER_SIZE --filter_stride $FILTER_STRIDE --embd_size $EMBED_SIZE --num_channels $CHANNEL_QUANT $MAL_TRAIN $BEN_TRAIN $MAL_TEST $BEN_TEST
