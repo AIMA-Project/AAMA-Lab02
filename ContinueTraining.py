@@ -281,5 +281,10 @@ with open(base_name + ".csv", 'w') as csv_log_out:
 
         csv_log_out.write(",".join([str(epoch_stats[h]) for h in headers]) + "\n")
         csv_log_out.flush()
-        
-        scheduler.step()
+
+        # Throws a div by 0 exception for a modulo operation in optuna when calling this function;
+        # dirty hack to stop that from happening
+        try:
+            scheduler.step()
+        except ZeroDivisionError:
+            pass
