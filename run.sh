@@ -9,20 +9,20 @@ BEN_TEST=data/ben_valid
 
 
 # Size of training batches (default 128); lower this number if training fails
-BATCH_SIZE=16
+BATCH_SIZE=8
 
-# Number of iterations to train model over (default 10)
+# Number of iterations to train model over (default 10); DO NOT MODIFY THIS VALUE FOR LAB
 EPOCHS=10
 
 # Largest contiguous block of bytes from an executable model will train on; files larger than this
 # value will be truncated (default 16000000)
-MAX_FILE_SIZE=64000000
+MAX_FILE_SIZE=16000000
 
 # Width of filter for training (default 512)
-FILTER_SIZE=512
+FILTER_SIZE=256
 
 # String of filter during training (default 512)
-FILTER_STRIDE=512
+FILTER_STRIDE=256
 
 # Size of embedding layers (default 8)
 EMBED_SIZE=8
