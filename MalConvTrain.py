@@ -227,5 +227,3 @@ for epoch in tqdm(range(EPOCHS)):
     
     
 csv_log_out.close()
-
-torch.save (model.module.state_dict(), "./model.zip")
