@@ -61,4 +61,4 @@ EMBED_SIZE=4
 CHANNEL_QUANT=128
 
 # The command that does the actual training. Do not modify for the lab.
-python3 train.py --batch_size $BATCH_SIZE --epochs $EPOCHS --max_len $MAX_FILE_SIZE --filter_size $FILTER_SIZE --filter_stride $FILTER_STRIDE --embd_size $EMBED_SIZE --num_channels $CHANNEL_QUANT $MAL_TRAIN $BEN_TRAIN $MAL_TEST $BEN_TEST
+python3 MalConv/train.py --batch_size $BATCH_SIZE --epochs $EPOCHS --max_len $MAX_FILE_SIZE --filter_size $FILTER_SIZE --filter_stride $FILTER_STRIDE --embd_size $EMBED_SIZE --num_channels $CHANNEL_QUANT $MAL_TRAIN $BEN_TRAIN $MAL_TEST $BEN_TEST
