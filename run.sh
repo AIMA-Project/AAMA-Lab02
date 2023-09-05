@@ -67,6 +67,6 @@ python3 MalConv/train.py --batch_size $BATCH_SIZE --epochs $EPOCHS --max_len $MA
 echo $BATCH_SIZE > parameters.txt
 echo $MAX_FILE_SIZE >> parameters.txt
 echo $FILTER_SIZE >> parameters.txt
-echo $FILTER_STRING >> parameters.txt
+echo $FILTER_STRIDE >> parameters.txt
 echo $EMBED_SIZE >> parameters.txt
 echo $CHANNEL_QUANT >> parameters.txt
