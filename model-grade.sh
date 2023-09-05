@@ -6,7 +6,7 @@ MAL_TRAIN=grade_data/mal_train
 BEN_TRAIN=grade_data/ben_train
 MAL_TEST=grade_data/mal_valid
 BEN_TEST=grade_data/ben_valid
-MODEL_DIR=checkpoints
+MODEL_DIR=to_grade
 
 
 # Low batch size to help with working on lower-end hardware

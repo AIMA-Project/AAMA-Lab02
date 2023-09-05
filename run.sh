@@ -62,3 +62,11 @@ CHANNEL_QUANT=128
 
 # The command that does the actual training. Do not modify for the lab.
 python3 MalConv/train.py --batch_size $BATCH_SIZE --epochs $EPOCHS --max_len $MAX_FILE_SIZE --filter_size $FILTER_SIZE --filter_stride $FILTER_STRIDE --embd_size $EMBED_SIZE --num_channels $CHANNEL_QUANT $MAL_TRAIN $BEN_TRAIN $MAL_TEST $BEN_TEST
+
+# Store the parameters used for training in a text file. This is needed for grading.
+echo $BATCH_SIZE > parameters.txt
+echo $MAX_FILE_SIZE >> parameters.txt
+echo $FILTER_SIZE >> parameters.txt
+echo $FILTER_STRING >> parameters.txt
+echo $EMBED_SIZE >> parameters.txt
+echo $CHANNEL_QUANT >> parameters.txt
