@@ -52,11 +52,13 @@ EMBED_SIZE=4
 #    Default: 128
 CHANNEL_QUANT=128
 
-#Remove old checkpoints before training from scratch
-rm -rf ./MalConv_*
+#Remove an previous training data before starting this training.
+rm -rf ./MalConv_* ./parameters.txt ./*.zip
 
 # The command that does the actual training. Do not modify for the lab.
-python3 MalConv/train.py --batch_size $BATCH_SIZE --epochs 10 --max_len $MAX_FILE_SIZE --filter_size $FILTER_SIZE --filter_stride $FILTER_STRIDE --embd_size $EMBED_SIZE --num_channels $CHANNEL_QUANT $MAL_TRAIN $BEN_TRAIN $MAL_TEST $BEN_TEST
+python3 MalConv/train.py --batch_size $BATCH_SIZE --epochs 10 --max_len $MAX_FILE_SIZE \
+        --filter_size $FILTER_SIZE --filter_stride $FILTER_STRIDE --embd_size $EMBED_SIZE \
+		--num_channels $CHANNEL_QUANT $MAL_TRAIN $BEN_TRAIN $MAL_TEST $BEN_TEST
 
 # Store the parameters used for training in a text file. This is needed for grading.
 echo $BATCH_SIZE > parameters.txt
