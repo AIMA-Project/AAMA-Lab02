@@ -67,4 +67,4 @@ echo $EMBED_SIZE >> parameters.txt
 echo $CHANNEL_QUANT >> parameters.txt
 
 # Create a zip file with the results and parameters
-7z a assignment.zip parameters.txt MalCon_*
+7z a assignment.zip parameters.txt MalConv_*
