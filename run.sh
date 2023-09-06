@@ -17,14 +17,6 @@ BEN_TEST=data/ben_valid
 # If training fails, there is a chance this number is too high. This is why the default is so low.
 BATCH_SIZE=16
 
-# Number of iterations to train model over.
-# Increasing: Improves model performance (to a limit) at the cost of training time.
-# Decreasing: Reduces training time but decreases model accuracy, especially at smaller values.
-#    Default: 10
-#
-# For the lab DO NOT modify this value. Only a maximum of 10 epochs should be used.
-EPOCHS=10
-
 # The largest file size that will be used for training the model. Any file that is larger than this
 # value will be truncated to this value.
 # Increasing: Considers more file data for training at the cost of training time.
@@ -60,8 +52,11 @@ EMBED_SIZE=4
 #    Default: 128
 CHANNEL_QUANT=128
 
+#Remove old checkpoints before training from scratch
+rm -rf ./MalConv_*
+
 # The command that does the actual training. Do not modify for the lab.
-python3 MalConv/train.py --batch_size $BATCH_SIZE --epochs $EPOCHS --max_len $MAX_FILE_SIZE --filter_size $FILTER_SIZE --filter_stride $FILTER_STRIDE --embd_size $EMBED_SIZE --num_channels $CHANNEL_QUANT $MAL_TRAIN $BEN_TRAIN $MAL_TEST $BEN_TEST
+python3 MalConv/train.py --batch_size $BATCH_SIZE --epochs 10 --max_len $MAX_FILE_SIZE --filter_size $FILTER_SIZE --filter_stride $FILTER_STRIDE --embd_size $EMBED_SIZE --num_channels $CHANNEL_QUANT $MAL_TRAIN $BEN_TRAIN $MAL_TEST $BEN_TEST
 
 # Store the parameters used for training in a text file. This is needed for grading.
 echo $BATCH_SIZE > parameters.txt
@@ -70,3 +65,6 @@ echo $FILTER_SIZE >> parameters.txt
 echo $FILTER_STRIDE >> parameters.txt
 echo $EMBED_SIZE >> parameters.txt
 echo $CHANNEL_QUANT >> parameters.txt
+
+# Create a zip file with the results and parameters
+7z a assignment.zip parameters.txt MalCon_*
