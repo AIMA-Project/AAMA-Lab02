@@ -53,7 +53,8 @@ EMBED_SIZE=4
 CHANNEL_QUANT=128
 
 #Remove an previous training data before starting this training.
-rm -rf ./MalConv_* ./parameters.txt ./*.zip
+echo "Preparing to train..."
+rm -rf ./MalConv_* ./parameters.txt ./*.zip > /dev/null
 
 # The command that does the actual training. Do not modify for the lab.
 python3 MalConv/train.py --batch_size $BATCH_SIZE --epochs 10 --max_len $MAX_FILE_SIZE \
@@ -69,4 +70,5 @@ echo $EMBED_SIZE >> parameters.txt
 echo $CHANNEL_QUANT >> parameters.txt
 
 # Create a zip file with the results and parameters
-7z a assignment.zip parameters.txt MalConv_*
+echo "Creating assignment archive..."
+7z a assignment.zip parameters.txt MalConv_* > /dev/null
