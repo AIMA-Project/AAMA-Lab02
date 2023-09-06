@@ -11,9 +11,7 @@ MODEL_DIR=to_grade
 
 for file in $MODEL_DIR/*.zip; do
 	# Unzip student's assignment for grading
-	7z e $file
-	mv $MODEL_DIR/parameters.txt ./parameters.txt
-	mv $MODEL_DIR/MalConv_* ./
+	7z x $file
 	
 	# Get training parameters used by student
 	batch_size=$(sed '1!d' parameters.txt)
