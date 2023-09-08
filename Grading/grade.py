@@ -17,3 +17,9 @@ def get_test_results (f_name: str = "report.csv"):
 
 if __name__ == "__main__":
     x, y = get_test_results ()
+    x_arr = np.array (x)
+    y_arr = np.array (y)
+    a, b = np.polyfit (x, y, 1)
+
+    plt.scatter (x, y)
+    plt.plot (x, a*x+b)
