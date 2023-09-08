@@ -11,6 +11,7 @@ MODEL_DIR=to_grade
 
 for file in $MODEL_DIR/*.zip; do
 	# Unzip student's assignment for grading
+	echo "Extracting archive $file"
 	7z x $file > /dev/null
 	
 	# Get training parameters used by student
@@ -22,7 +23,8 @@ for file in $MODEL_DIR/*.zip; do
 	channel_quant=$(sed '6!d' parameters.txt)
 	
 	# Do model training for an extra epoch
-	python3 MalConv/train.py --batch_size $batch_size --epochs 11 --max_len $max_file_size \
+	echo "Training..."
+	python3 MalConv/train.py --batch_size $batch_size --epochs 8 --max_len $max_file_size \
 	        --filter_size $filter_size --filter_stride $filter_stride --embd_size $embed_size \
 			--num_channels $channel_quant $MAL_TRAIN $BEN_TRAIN $MAL_TEST $BEN_TEST
 	
