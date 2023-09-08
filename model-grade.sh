@@ -25,4 +25,12 @@ for file in $MODEL_DIR/*.zip; do
 	python3 MalConv/train.py --batch_size $batch_size --epochs 11 --max_len $max_file_size \
 	        --filter_size $filter_size --filter_stride $filter_stride --embd_size $embed_size \
 			--num_channels $channel_quant $MAL_TRAIN $BEN_TRAIN $MAL_TEST $BEN_TEST
+	
+	# Move model report to current dir. and grade it
+	mv ./MalConv_*/*.csv ./report.csv
+
+	python3 Grading/grade.py
+
+	# Clean up
+	rm -rf ./MalConv_*/ parameters.txt report.csv
 done
