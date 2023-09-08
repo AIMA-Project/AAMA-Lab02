@@ -19,7 +19,7 @@ if __name__ == "__main__":
     x, y = get_test_results ()
     x_arr = np.array (x)
     y_arr = np.array (y)
-    a, b = np.polyfit (x, y, 1)
+    a, b = np.polyfit (x_arr, y, 1)
 
-    plt.scatter (x, y)
-    plt.plot (x, a*x+b)
+    plt.scatter (x_arr, y)
+    plt.plot (x_arr, a*x_arr+b)
