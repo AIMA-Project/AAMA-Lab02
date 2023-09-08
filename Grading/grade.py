@@ -2,9 +2,9 @@ import csv
 import matplotlib.pyplot as plt
 import numpy as np
 
-def read_csv (f_name: str = "../report.csv"):
+def read_csv (f_name: str = "report.csv"):
     with open (f_name) as report:
-        report_read = report.reader (f_name, delimiter = ',')
+        report_read = csv.reader (report, delimiter = ',')
         for row in report_read:
             print (row)
 
