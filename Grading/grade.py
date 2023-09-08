@@ -15,15 +15,19 @@ def get_test_results (f_name: str = "report.csv"):
     return x_list, y_list
 
 
-def extrapolate_point (target: int, a: np.float64, b: np.float64) -> float:
-    # Get point on line mx+b
-    return (a*target+b)
+def extrapolate_point (target: int, a: np.float64, b: np.float64, c: np.float64, d: np.float64) -> float:
+    # Get point on line using 3rd degree polynomial
+    deg_three = (target * target * target) * a
+    deg_two = (target * target) * b
+    deg_one = target * c
+    deg_zero = d
+    return (deg_three + deg_two + deg_one + deg_zero)
 
 
 if __name__ == "__main__":
     x, y = get_test_results ()
     x_arr = np.array (x)
     y_arr = np.array (y)
-    a, b = np.polyfit (x_arr, y, 1)
+    a, b, c, d = np.polyfit (x_arr, y, 3)
 
-    extrapolate_point (10, a, b)
+    extrapolate_point (10, a, b, c, d)
