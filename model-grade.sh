@@ -31,7 +31,7 @@ for file in $MODEL_DIR/*.zip; do
 	# Move model report to current dir. and grade it
 	mv ./MalConv_*/*.csv ./report.csv
 
-	python3 Grading/grade.py
+	python3 Grading/grade.py $file
 
 	# Clean up
 	rm -rf ./MalConv_*/ parameters.txt report.csv

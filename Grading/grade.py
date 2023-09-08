@@ -1,6 +1,7 @@
 import csv
 import matplotlib.pyplot as plt
 import numpy as np
+from sys import argv
 
 def get_test_results (f_name: str = "report.csv"):
     x_list: list(int) = []      # Holds epoch number
@@ -24,10 +25,16 @@ def extrapolate_point (target: int, a: np.float64, b: np.float64, c: np.float64,
     return (deg_three + deg_two + deg_one + deg_zero)
 
 
+def store_result (p: float, f_name: str) -> None:
+    with open ("grades.txt", 'a') as results:
+        results.write (f_name + ": " + str(p))
+
+
 if __name__ == "__main__":
     x, y = get_test_results ()
     x_arr = np.array (x)
     y_arr = np.array (y)
     a, b, c, d = np.polyfit (x_arr, y, 3)
 
-    extrapolate_point (10, a, b, c, d)
+    p = extrapolate_point (10, a, b, c, d)
+    store_result (p, argv[1])
