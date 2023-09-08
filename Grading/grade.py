@@ -15,11 +15,15 @@ def get_test_results (f_name: str = "report.csv"):
     return x_list, y_list
 
 
+def extrapolate_point (target: int, a: np.float64, b: np.float64) -> float:
+    # Get point on line mx+b
+    return (a*target+b)
+
+
 if __name__ == "__main__":
     x, y = get_test_results ()
     x_arr = np.array (x)
     y_arr = np.array (y)
     a, b = np.polyfit (x_arr, y, 1)
 
-    plt.scatter (x_arr, y)
-    plt.plot (x_arr, a*x_arr+b)
+    extrapolate_point (10, a, b)
