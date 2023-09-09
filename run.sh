@@ -24,43 +24,17 @@ BATCH_SIZE=16
 #    Default: 32000000
 MAX_FILE_SIZE=16000000
 
-# Width of the filter used during training. The filter acts as a spotlight that analyzes a portion
-# of a bit stream. Modifying this value changes how "wide" that spotlight is.
-# Increasing: Raises the memory requirements and training time, but increases model accuracy.
-# Decreasing: Lowers model accuracy, but also lowers training time.
-#    Default: 256
-FILTER_SIZE=256
-
-# Changes how far each filter moves in relation to the previous filter's position.
-# Increasing: Increases the distance moved for each filter, lowering model performance but
-#             reducing time needed for training.
-# Decreasing: Creates a slower filter sweep that increases training time, but also increases
-#             performance of the model.
-#    Default: 1024
-FILTER_STRIDE=1024
-
-# The number of channels that will be produced by the network. Changes the complexity of the model.
-# Increasing: Increases model complexity at the expense of training time.
-# Decreasing: Decreases the time required to train the model, but also reduces model performance.
-#    Default: 128
-CHANNEL_QUANT=128
-
 #Remove an previous training data before starting this training.
 echo "Preparing to train..."
 rm -rf ./MalConv_* ./parameters.txt ./*.zip > /dev/null
 
 # The command that does the actual training. Do not modify for the lab.
 python3 MalConv/train.py --batch_size $BATCH_SIZE --epochs 10 --max_len $MAX_FILE_SIZE \
-        --filter_size $FILTER_SIZE --filter_stride $FILTER_STRIDE --embd_size 8 \
-		--num_channels $CHANNEL_QUANT $MAL_TRAIN $BEN_TRAIN $MAL_TEST $BEN_TEST
+		$MAL_TRAIN $BEN_TRAIN $MAL_TEST $BEN_TEST
 
 # Store the parameters used for training in a text file. This is needed for grading.
 echo $BATCH_SIZE > parameters.txt
 echo $MAX_FILE_SIZE >> parameters.txt
-echo $FILTER_SIZE >> parameters.txt
-echo $FILTER_STRIDE >> parameters.txt
-echo $EMBED_SIZE >> parameters.txt
-echo $CHANNEL_QUANT >> parameters.txt
 
 # Create a zip file with the results and parameters
 echo "Creating assignment archive..."
