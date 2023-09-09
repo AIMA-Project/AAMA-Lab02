@@ -22,7 +22,7 @@ BATCH_SIZE=16
 # Increasing: Considers more file data for training at the cost of training time.
 # Decreasing: Reduces training time but limits the files that can be used for training.
 #    Default: 32000000
-MAX_FILE_SIZE=32000000
+MAX_FILE_SIZE=16000000
 
 # Width of the filter used during training. The filter acts as a spotlight that analyzes a portion
 # of a bit stream. Modifying this value changes how "wide" that spotlight is.
@@ -39,13 +39,6 @@ FILTER_SIZE=256
 #    Default: 1024
 FILTER_STRIDE=1024
 
-# The size of the embedding layer used with the model. This layer maps lower-complexity layers to
-# higher-complexity layers in the network.
-# Increasing: Improves model accuracy, but increases training time.
-# Decreasing: Decreases model accuracy, but reduces training time.
-#    Default: 4
-EMBED_SIZE=4
-
 # The number of channels that will be produced by the network. Changes the complexity of the model.
 # Increasing: Increases model complexity at the expense of training time.
 # Decreasing: Decreases the time required to train the model, but also reduces model performance.
@@ -58,7 +51,7 @@ rm -rf ./MalConv_* ./parameters.txt ./*.zip > /dev/null
 
 # The command that does the actual training. Do not modify for the lab.
 python3 MalConv/train.py --batch_size $BATCH_SIZE --epochs 10 --max_len $MAX_FILE_SIZE \
-        --filter_size $FILTER_SIZE --filter_stride $FILTER_STRIDE --embd_size $EMBED_SIZE \
+        --filter_size $FILTER_SIZE --filter_stride $FILTER_STRIDE --embd_size 8 \
 		--num_channels $CHANNEL_QUANT $MAL_TRAIN $BEN_TRAIN $MAL_TEST $BEN_TEST
 
 # Store the parameters used for training in a text file. This is needed for grading.
