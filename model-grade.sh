@@ -24,11 +24,9 @@ for file in $MODEL_DIR/*.zip; do
 	        --epochs 1 --model "MalConv" --checkpoint ./MalConv_*/epoch_9.checkpoint \
 			$MAL_TRAIN $BEN_TRAIN $MAL_TEST $BEN_TEST
 	
-	# Move model report to current dir. and grade it
-	mv ./MalConv_*/*.csv ./report.csv
-
-	python3 Grading/grade.py $file
+	# Grade model
+	python3 Grading/grade.py ./long_train.csv
 
 	# Clean up
-	rm -rf ./MalConv_*/ parameters.txt report.csv
+	rm -rf ./MalConv_*/ parameters.txt report.csv ./long_train/ long_train.csv
 done

@@ -1,3 +1,21 @@
+import csv
+from os import argv
+
+
+def load_test_acc (report: str) -> float:
+    data = []
+    # Open csv file with training results
+    with open (report) as results_file:
+        csv_parser = csv.reader (results_file)
+        # Get second row of csv file, which should have training results
+        for row in enumerate (csv_parser, delimiter = ','):
+            if (row[0] == 0):
+                continue
+            data = row[1]
+    # Return the fourth element of the results, which should be training accuracy
+    return float (data[3])
+
 
 if __name__ == "__main__":
-    pass
+    train_acc = load_test_acc (argv[1])
+    print (train_acc)
