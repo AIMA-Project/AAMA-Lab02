@@ -25,7 +25,7 @@ for file in $MODEL_DIR/*.zip; do
 			$MAL_TRAIN $BEN_TRAIN $MAL_TEST $BEN_TEST
 	
 	# Grade model
-	python3 Grading/grade.py ./long_train.csv
+	python3 Grading/grade.py ./long_train.csv $file
 
 	# Clean up
 	rm -rf ./MalConv_*/ parameters.txt report.csv ./long_train/ long_train.csv
