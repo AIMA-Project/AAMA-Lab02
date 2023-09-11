@@ -21,7 +21,7 @@ for file in $MODEL_DIR/*.zip; do
 	# Do model training for an extra epoch
 	echo "Training..."
 	python3 MalConv/ContinueTraining.py --batch_size $batch_size --max_len $max_file_size \
-	        --epochs 11 --model "MalConv" --checkpoint ./MalConv_*/epoch_9.checkpoint \
+	        --epochs 1 --model "MalConv" --checkpoint ./MalConv_*/epoch_9.checkpoint \
 			$MAL_TRAIN $BEN_TRAIN $MAL_TEST $BEN_TEST
 	
 	# Move model report to current dir. and grade it
