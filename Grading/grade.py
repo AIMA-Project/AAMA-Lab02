@@ -19,4 +19,4 @@ def load_test_acc (report: str) -> float:
 if __name__ == "__main__":
     train_acc = load_test_acc (argv[1])
     with open ("grade_sheet.txt", "a") as append_grade:
-        append_grade.write (argv[2] + str (train_acc) + '\n')
+        append_grade.write (argv[2] + ' ' + str (train_acc) + '\n')
