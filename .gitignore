@@ -1,6 +1,5 @@
 # Directories
 __pycache__/
-data/
 grade_data/
 *MalConv_*/
 to_grade/
