@@ -9,6 +9,7 @@ to_grade/
 *.checkpoint
 *.csv
 *.zip
+*.exe
 
 # Specific Files
 model.zip
