@@ -1,14 +1,29 @@
  # Import the latest Python docker image
 FROM python:latest
 
-# Move lab code over to container during building
-# Copy over setup files
-COPY requirements.txt /home/
-COPY Lab02/setup.sh /home/
-# Copy over actual lab components
-COPY Lab02/run.sh /home/
-COPY Lab02/MalConv /home/MalConv
-COPY Lab02/data /home/data
-# Copy over grading
-COPY Lab02/model-grade.sh /home/
-COPY Lab02/Grading /home/Grading
+SHELL ["/bin/bash", "-c"]
+
+# === User Creation ================================================================================
+RUN useradd -ms /bin/bash aama
+USER aama
+WORKDIR /home/amma/
+
+# === Copy Lab Code ================================================================================
+# Lab components
+COPY Lab02/run.sh .
+COPY Lab02/MalConv ./MalConv
+COPY Lab02/data ./data
+# Grading scripts
+COPY Lab02/model-grade.sh .
+COPY Lab02/Grading ./Grading
+
+# === Setup Python =================================================================================
+# Copy requirements.txt
+COPY requirements.txt .
+# Setup virutal environment
+RUN python3 -m venv venv
+RUN source venv/bin/activate && pip3 install -r requirements.txt
+
+# === Finishing Up =================================================================================
+# Default to bash as the shell called when running
+CMD ["/bin/bash"]
