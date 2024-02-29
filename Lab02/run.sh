@@ -15,14 +15,14 @@ BEN_TEST=data/ben_valid
 #    Default: 16
 #
 # If training fails, there is a chance this number is too high. This is why the default is so low.
-BATCH_SIZE=16
+BATCH_SIZE=4
 
 # The largest file size that will be used for training the model. Any file that is larger than this
 # value will be truncated to this value.
 # Increasing: Considers more file data for training at the cost of training time.
 # Decreasing: Reduces training time but limits the files that can be used for training.
 #    Default: 32000000
-MAX_FILE_SIZE=16000000
+MAX_FILE_SIZE=256000
 
 #Remove an previous training data before starting this training.
 echo "Preparing to train..."
