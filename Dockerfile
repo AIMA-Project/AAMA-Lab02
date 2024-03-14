@@ -10,7 +10,7 @@ RUN useradd -ms /bin/bash aama
 WORKDIR /home/aama/
 
 # === Setup Python Virtual Environment =============================================================
-COPY requirements.txt .
+COPY resources/requirements.txt .
 # Setup virutal environment
 RUN python3 -m venv venv
 RUN source venv/bin/activate && pip3 install -r requirements.txt --no-cache-dir
@@ -20,12 +20,12 @@ RUN apt update && apt install nano vim 7zip p7zip-full -y
 
 # === Copy Lab Code ================================================================================
 # Lab components
-COPY Lab02/run.sh .
-COPY Lab02/MalConv ./MalConv
-COPY Lab02/data ./data
+COPY resources/run.sh .
+COPY resources/MalConv ./MalConv
+COPY resources/data ./data
 # Grading scripts
-COPY Lab02/model-grade.sh .
-COPY Lab02/Grading ./Grading
+COPY resources/model-grade.sh .
+COPY resources/Grading ./Grading
 
 # === Enable User "aama" ===========================================================================
 RUN chown -R aama:aama .
