@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Build the container for lab 2
-docker build -t lab02-image .
+sudo docker build -t lab02 .
 
 # Launch the container and enter a bash shell
-docker run --name lab02 -it lab02-image /bin/bash
+sudo docker run --name lab2 -it lab02
