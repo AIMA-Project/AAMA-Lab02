@@ -8,7 +8,21 @@ MAL_TEST=grade_data/mal_valid
 BEN_TEST=grade_data/ben_valid
 MODEL_DIR=to_grade
 
+# Directory holding assignments doesn't exist yet
+if [ ! -d $MODEL_DIR ]; then
+	mkdir $MODEL_DIR
+fi
 
+# Directory holding grading test data doesn't exist yet
+if [ ! -d "grade_data" ]; then
+	mkdir -p $MAL_TRAIN
+	mkdir $BEN_TRAIN
+	mkdir $MAL_TEST
+	mkdir $BEN_TEST
+fi
+
+
+# Iterate through and grade all assignments in to_grade/
 for file in $MODEL_DIR/*.zip; do
 	# Unzip student's assignment for grading
 	echo "Extracting archive $file"
