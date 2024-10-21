@@ -1,4 +1,4 @@
- # Import the latest Python docker image
+# Import the latest Python docker image
 FROM python:latest
 
 # Default to bash as shell used
@@ -10,21 +10,20 @@ RUN useradd -ms /bin/bash aama
 WORKDIR /home/aama/
 
 # === Setup Python Virtual Environment =============================================================
-COPY resources/requirements.txt .
+COPY resources/requirements.txt ./requirements.txt
 # Setup virutal environment
-RUN python3 -m venv venv
-RUN source venv/bin/activate && pip3 install -r requirements.txt --no-cache-dir
+RUN pip3 install -r requirements.txt --no-cache-dir
 
 # === Install Utilities ============================================================================
 RUN apt update && apt install nano vim 7zip p7zip-full -y
 
 # === Copy Lab Code ================================================================================
 # Lab components
-COPY resources/run.sh .
+COPY resources/run.sh ./run.sh
 COPY resources/MalConv ./MalConv
 COPY resources/data ./data
 # Grading scripts
-COPY resources/model-grade.sh .
+COPY resources/model-grade.sh ./model-grade.sh
 COPY resources/Grading ./Grading
 
 # === Enable User "aama" ===========================================================================
