@@ -31,13 +31,14 @@ See the below section for more information.
 ## Building Lab Images
 **It is important to note that Linux users will have to run Docker commands as root or using the `sudo` command!**
 
-A pre-built image is available on [Docker Hub](https://hub.docker.com/r/abcyslab/aama-lab02) if you wish to skip the
+A pre-built image is available on [Docker Hub](https://hub.docker.com/r/abcyslab/aama_lab02) if you wish to skip the
 building process. This image is automatically built, so it stays up to date with the repository. A set of directions is
 provided by Docker Hub to pull and run the image.
 
 Building the image requires Docker to be installed and running on the user's computer. These instructions are
-applicable to both Windows and Linux operating systems. To assist with building, "docker_setup.ps1" (Windows) and
-"docker_setup.sh" (Linux) have be provided to automatically build and run the lab container.
+applicable to both Windows and Linux operating systems. To assist with building, a docker setup script has been
+provided as part of the repo. While this file has a `.ps1` extension, it is runnable under Linux as well as it uses
+compatible syntax.
 
 
 ## Running Lab 2
