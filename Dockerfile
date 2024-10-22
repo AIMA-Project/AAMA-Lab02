@@ -1,5 +1,5 @@
 # Import the latest Python docker image
-FROM python:latest
+FROM python:3.10-bookworm
 
 # Default to bash as shell used
 CMD ["/bin/bash"]
